@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PixelBlue | متجر الكاميرات</title>
+  <meta name="description" content="متجر تقني عصري لبيع الكاميرات وإكسسواراتها بأفضل الأسعار.">
+
+  <!-- Fonts: Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --white:#ffffff; --black:#0b0b0b;
+      --blue:#3b82f6; --blue-600:#2563eb;
+      --muted:#667085; --border:#eaeef3;
+      --card:#f7f9fc; --shadow:0 12px 32px rgba(2,6,23,.08);
+    }
+    html,body{
+      background:var(--white);
+      color:var(--black);
+      font-family:'Cairo', system-ui, -apple-system, Segoe UI, Roboto, 'Noto Kufi Arabic', sans-serif;
+    }
+    main{max-width:1200px;margin:0 auto;padding:1rem}
+
+    /* HERO */
+    .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;margin:1rem 0 2rem}
+    .hero-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:1.5rem 2rem;box-shadow:var(--shadow);max-width:800px}
+    .badge{display:inline-block;background:var(--blue);color:#fff;border-radius:999px;padding:.25rem .6rem;font-size:.8rem;margin-bottom:.6rem}
+    .hero-title{font-size:clamp(1.6rem,3vw,2.2rem);margin:.2rem 0 .6rem}
+    .hero-sub{color:var(--muted);margin-bottom:1rem}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;border:0;border-radius:12px;padding:.7rem 1rem;cursor:pointer;text-decoration:none;font-weight:600}
+    .btn-blue{background:var(--blue);color:#fff}
+    .btn-blue:hover{background:var(--blue-600)}
+    .btn-outline{background:#fff;border:1px solid var(--border);color:var(--black)}
+
+    /* Sections */
+    .section{margin:2.2rem 0}
+    .section h2{font-size:1.4rem;margin:.2rem 0 1rem;text-align:center}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+
+    /* Product cards */
+    .card{grid-column:span 4;background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .card img{width:100%;height:200px;object-fit:cover;background:linear-gradient(135deg,#0b1324,#3b82f6)}
+    .card .c-body{padding:.9rem}
+    .price{font-weight:800;color:var(--blue)}
+    .pill{background:#111;color:#fff;border-radius:999px;padding:.15rem .5rem;font-size:.75rem}
+
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+    .feature{grid-column:span 4;border:1px solid var(--border);border-radius:14px;padding:1rem;background:#fff}
+    .feature h3{margin:.2rem 0 .5rem}
+    .feature p{color:var(--muted);margin:0}
+
+    /* CTA */
+    .cta{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;align-items:center;background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem}
+    .cta .ill{grid-column:span 6;border-radius:12px;overflow:hidden}
+    .cta .txt{grid-column:span 6}
+    .cta img{width:100%;height:auto;display:block;object-fit:cover;background:linear-gradient(135deg,#0b1324,#3b82f6)}
+    .cta h3{margin:.2rem 0 .4rem}
+    .cta p{color:var(--muted)}
+
+    /* VIDEO SECTION */
+    .video-section{margin:2.2rem 0}
+    .video-card{position:relative;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:#000;box-shadow:var(--shadow);}
+    .video-media{width:100%;display:block;aspect-ratio:16/9;background:linear-gradient(135deg,#0b1324,#3b82f6);}
+    .video-topbar{position:absolute; inset-inline:0; top:0;display:flex; justify-content:space-between; align-items:center;padding:.5rem .8rem; color:#e6efff; font-size:.9rem;background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,0));}
+    .video-footer{display:flex; justify-content:space-between; align-items:center;gap:.8rem; padding:.8rem 1rem; background:#0b0f1e; color:#cdd9ff; font-size:.9rem;}
+    .video-footer .hint{color:#8aa6ff}
+    .video-footer .mini{display:flex; align-items:center; gap:.6rem;}
+
+    @media (max-width: 980px){
+      .grid .card{grid-column:span 12}
+      .features .feature{grid-column:span 12}
+      .cta .ill,.cta .txt{grid-column:span 12}
+    }
+  </style>
+</head>
+<body id="top">
+  <!-- الهيدر -->
+  <div id="appHeader" data-include="./header.html" role="region" aria-label="ترويسة"></div>
+
+  <main id="main" tabindex="-1">
+    <!-- HERO بدون الصورة -->
+    <section class="hero">
+      <div class="hero-card">
+        <span class="badge">إطلاق جديد</span>
+        <h1 class="hero-title">كاميرات احترافية وإكسسوارات أصلية – تسوّق بثقة</h1>
+        <p class="hero-sub">اختيارات منتقاة للمصورين: كاميرات Mirrorless وDSLR وعدسات ثابتة وزوم، ميكروفونات، ترايبود، إضاءة، بطاريات والمزيد.</p>
+        <div style="display:flex;gap:.6rem;justify-content:center">
+          <a href="#categories" class="btn btn-blue">ابدأ التسوق</a>
+          <a href="#best" class="btn btn-outline">الأكثر مبيعًا</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- قسم الفيديو -->
+    <section class="video-section" aria-labelledby="promoTitle">
+      <h2 id="promoTitle">استعراض سريع: تجربة تصوير حقيقية</h2>
+      <article class="video-card">
+        <div class="video-topbar">
+          <span>PixelBlue Showcase</span>
+          <span>دقة HD • صوت ستيريو</span>
+        </div>
+        <video id="promoVideo" class="video-media"
+               src="./media/de.mp4"
+               muted
+               autoplay
+               loop
+               playsinline></video>
+        <div class="video-footer">
+          <div class="mini"><strong>لقطات ليلية</strong><span class="hint">— ISO منخفض، ثبات ممتاز</span></div>
+          <div class="mini"><span>نصيحة: جرّب وضع ملء الشاشة</span></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- التصنيفات -->
+    <section id="categories" class="section">
+      <h2>التصنيفات الشائعة</h2>
+      <div class="grid">
+        <article class="card">
+          <img src="./media/image3.jpeg" alt="كاميرا ميرورلس">
+          <div class="c-body"><strong>كاميرات ميرورلس</strong><p class="hero-sub">خفيفة، سريعة، جودة صورة مذهلة.</p></div>
+        </article>
+        <article class="card">
+          <img src="./media/image4.jpeg" alt="عدسات احترافية">
+          <div class="c-body"><strong>عدسات احترافية</strong><p class="hero-sub">برايم وزوم بفتحات واسعة.</p></div>
+        </article>
+        <article class="card">
+          <img src="./media/images1.jpeg" alt="إضاءة تصوير">
+          <div class="c-body"><strong>إضاءة تصوير</strong><p class="hero-sub">بانلز، رينج لايت، RGB.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- الأكثر مبيعًا -->
+    <section id="best" class="section">
+      <h2>الأكثر مبيعًا</h2>
+      <div class="grid">
+        <article class="card">
+          <img src="./media/images1.jpeg" alt="PX-4K Pro">
+          <div class="c-body"><strong>PX-4K Pro</strong><p class="hero-sub">تصوير 4K/60 مع تثبيت بصري.</p></div>
+        </article>
+        <article class="card">
+          <img src="./media/image4.jpeg" alt="MicGo V">
+          <div class="c-body"><strong>MicGo V</strong><p class="hero-sub">لاسلكي، صوت نقي للفلوجرز.</p></div>
+        </article>
+        <article class="card">
+          <img src="./media/image3.jpeg" alt="TriFlex Carbon">
+          <div class="c-body"><strong>TriFlex Carbon</strong><p class="hero-sub">خفيف وثابت بارتفاع 160 سم.</p></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- الفوتر -->
+  <div id="appFooter" data-include="./footer.html" role="region" aria-label="تذييل"></div>
+
+  <!-- سكربت -->
+  <script type="module">
+    async function includePartials(){
+      const containers=[...document.querySelectorAll('[data-include]')];
+      for (const el of containers){
+        const url=el.getAttribute('data-include');
+        try{
+          const res=await fetch(url);
+          const html=await res.text();
+          const tpl=document.createElement('template'); tpl.innerHTML=html;
+          el.replaceWith(tpl.content.cloneNode(true));
+        }catch(err){console.error(err);}
+      }
+    }
+    includePartials();
+  </script>
+</body>
+</html>
