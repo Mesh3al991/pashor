@@ -21,6 +21,8 @@
         <li><a href="#categories">التصنيفات</a></li>
         <li><a href="#best">الأكثر مبيعًا</a></li>
         <li><a href="#contact">تواصل</a></li>
+        <!-- زر جديد لحجز الطلب ضمن القائمة -->
+        <li><a href="order.html" target="_blank">حجز طلب</a></li>
       </ul>
     </nav>
 
@@ -31,10 +33,6 @@
         <button type="submit" aria-label="بحث">🔍</button>
       </form>
       <button class="icon-btn" aria-label="السلة" title="سلة المشتريات">🛒</button>
-      
-      <!-- زر جديد لحجز الطلب -->
-      <button class="icon-btn" id="orderBtn" aria-label="حجز طلب" title="حجز طلب">📦 حجز طلب</button>
-      
       <button id="navToggle" class="nav-toggle" aria-label="إظهار/إخفاء القائمة" aria-controls="primaryNav" aria-expanded="false">☰</button>
     </div>
   </div>
@@ -69,7 +67,7 @@
     margin: 0 auto;
     padding: .8rem 1rem;
     display: flex;
-    align-items: center; /* محاذاة عمودية متساوية */
+    align-items: center;
     justify-content: space-between;
     gap: 1rem;
   }
@@ -163,11 +161,5 @@
     e.preventDefault();
     const q=document.getElementById('searchInput')?.value.trim();
     if(q) alert(`جارٍ البحث عن: ${q}`);
-  });
-
-  // فتح صفحة حجز الطلبات في نافذة جديدة
-  const orderBtn=document.getElementById('orderBtn');
-  orderBtn?.addEventListener('click',()=>{
-    window.open('order.html','_blank');
   });
 </script>
