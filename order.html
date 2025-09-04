@@ -1,0 +1,183 @@
+<!-- order.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حجز طلب - PixelBlue</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white:#ffffff;
+      --black:#0b0b0b;
+      --blue:#3b82f6;
+      --blue-600:#2563eb;
+      --muted:#64748b;
+      --border:#eaeef3;
+      --green:#10b981;
+      --red:#ef4444;
+    }
+
+    html, body {
+      font-family:'Cairo', system-ui, -apple-system, Segoe UI, Roboto, 'Noto Kufi Arabic', sans-serif;
+      margin:0;
+      padding:0;
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    label {
+      font-weight:600;
+      margin-bottom: .3rem;
+      display: inline-block;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: .7rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px rgba(59,130,246,.2);
+    }
+
+    button {
+      background: var(--blue);
+      color: var(--white);
+      font-weight:600;
+      padding: .9rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .2s;
+      font-size:1.1rem;
+    }
+
+    button:hover {
+      background: var(--blue-600);
+    }
+
+    .msg {
+      margin-top:1rem;
+      padding:1rem;
+      border-radius:8px;
+      display:none;
+      font-weight:600;
+      text-align:center;
+    }
+
+    .msg.success {background: var(--green); color:#fff;}
+    .msg.error {background: var(--red); color:#fff;}
+  </style>
+</head>
+<body>
+
+  <!-- الشريط العلوي -->
+  <div id="header"></div>
+
+  <!-- المحتوى -->
+  <main class="container">
+    <h1 style="text-align:center;margin-bottom:1rem">📦 حجز طلب</h1>
+    <p style="text-align:center;margin-bottom:2rem">املأ النموذج التالي لإرسال طلبك</p>
+
+    <form id="orderForm">
+      <div>
+        <label for="name">الاسم الكامل</label>
+        <input type="text" id="name" name="name" placeholder="أدخل اسمك" required>
+      </div>
+
+      <div>
+        <label for="phone">رقم الجوال</label>
+        <input type="tel" id="phone" name="phone" placeholder="05xxxxxxxx" required>
+      </div>
+
+      <div>
+        <label for="product">اختر المنتج</label>
+        <select id="product" name="product" required>
+          <option value="">-- اختر المنتج --</option>
+          <option value="camera">كاميرا احترافية</option>
+          <option value="lens">عدسة تصوير</option>
+          <option value="tripod">حامل ثلاثي</option>
+          <option value="lighting">إضاءة استوديو</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="qty">الكمية</label>
+        <input type="number" id="qty" name="qty" min="1" value="1" required>
+      </div>
+
+      <div>
+        <label for="notes">ملاحظات إضافية</label>
+        <textarea id="notes" name="notes" rows="4" placeholder="اكتب أي تفاصيل إضافية"></textarea>
+      </div>
+
+      <button type="submit">إرسال الطلب</button>
+    </form>
+
+    <div class="msg success" id="successMsg">✅ تم إرسال طلبك بنجاح!</div>
+    <div class="msg error" id="errorMsg">❌ حدث خطأ، حاول مرة أخرى.</div>
+  </main>
+
+  <!-- الشريط السفلي -->
+  <div id="footer"></div>
+
+  <script>
+    // تحميل الشريط العلوي والسفلي بشكل نسبي
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('header').innerHTML = data; });
+
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('footer').innerHTML = data; });
+
+    // منطق النموذج
+    const form = document.getElementById('orderForm');
+    const successMsg = document.getElementById('successMsg');
+    const errorMsg = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const product = document.getElementById('product').value;
+      const qty = document.getElementById('qty').value;
+
+      if(name && phone && product && qty){
+        successMsg.style.display = 'block';
+        errorMsg.style.display = 'none';
+        form.reset();
+
+        setTimeout(()=>{successMsg.style.display='none';},3000);
+      } else {
+        errorMsg.style.display = 'block';
+        successMsg.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>

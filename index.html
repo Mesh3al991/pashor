@@ -17,6 +17,7 @@
       --blue:#3b82f6; --blue-600:#2563eb;
       --muted:#667085; --border:#eaeef3;
       --card:#f7f9fc; --shadow:0 12px 32px rgba(2,6,23,.08);
+      --wa:#25d366; --wa-dark:#1ebe5d;
     }
     html,body{
       background:var(--white);
@@ -48,6 +49,22 @@
     .card .c-body{padding:.9rem}
     .price{font-weight:800;color:var(--blue)}
     .pill{background:#111;color:#fff;border-radius:999px;padding:.15rem .5rem;font-size:.75rem}
+
+    /* WhatsApp Button */
+    .btn-wa {
+      display:inline-block;
+      margin-top:.6rem;
+      background:var(--wa);
+      color:#fff;
+      font-size:.9rem;
+      border-radius:8px;
+      padding:.5rem .8rem;
+      text-decoration:none;
+      transition:background .2s;
+    }
+    .btn-wa:hover {
+      background:var(--wa-dark);
+    }
 
     /* Features */
     .features{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
@@ -84,7 +101,7 @@
   <div id="appHeader" data-include="./header.html" role="region" aria-label="ترويسة"></div>
 
   <main id="main" tabindex="-1">
-    <!-- HERO بدون الصورة -->
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-card">
         <span class="badge">إطلاق جديد</span>
@@ -143,15 +160,27 @@
       <div class="grid">
         <article class="card">
           <img src="./media/images1.jpeg" alt="PX-4K Pro">
-          <div class="c-body"><strong>PX-4K Pro</strong><p class="hero-sub">تصوير 4K/60 مع تثبيت بصري.</p></div>
+          <div class="c-body">
+            <strong>PX-4K Pro</strong>
+            <p class="hero-sub">تصوير 4K/60 مع تثبيت بصري.</p>
+            <a class="btn-wa" href="https://wa.me/966581149999?text=مرحباً، أود الاستفسار عن منتج PX-4K Pro (تصوير 4K/60 مع تثبيت بصري)." target="_blank">💬 استعلام</a>
+          </div>
         </article>
         <article class="card">
           <img src="./media/image4.jpeg" alt="MicGo V">
-          <div class="c-body"><strong>MicGo V</strong><p class="hero-sub">لاسلكي، صوت نقي للفلوجرز.</p></div>
+          <div class="c-body">
+            <strong>MicGo V</strong>
+            <p class="hero-sub">لاسلكي، صوت نقي للفلوجرز.</p>
+            <a class="btn-wa" href="https://wa.me/966581149999?text=مرحباً، أود الاستفسار عن منتج MicGo V (لاسلكي، صوت نقي للفلوجرز)." target="_blank">💬 استعلام</a>
+          </div>
         </article>
         <article class="card">
           <img src="./media/image3.jpeg" alt="TriFlex Carbon">
-          <div class="c-body"><strong>TriFlex Carbon</strong><p class="hero-sub">خفيف وثابت بارتفاع 160 سم.</p></div>
+          <div class="c-body">
+            <strong>TriFlex Carbon</strong>
+            <p class="hero-sub">خفيف وثابت بارتفاع 160 سم.</p>
+            <a class="btn-wa" href="https://wa.me/966581149999?text=مرحباً، أود الاستفسار عن منتج TriFlex Carbon (خفيف وثابت بارتفاع 160 سم)." target="_blank">💬 استعلام</a>
+          </div>
         </article>
       </div>
     </section>
